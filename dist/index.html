@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EBZ-CONSOLE</title>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+<script>
+    var socket = io("http://localhost:8080");
+    socket.on("init", function() { socket.emit("newInterface")});
+    socket.on("Log", function(data) {log("log", data)});
+    socket.on("Info", function(data) {log("info", data)});
+    socket.on("Warn", function(data) {log("warn", data)});
+    socket.on("Error", function(data) {log("error", data)});
+    function log(type, data) {
+        for (var i in data) {
+            try {
+                data[i] = JSON.parse(data[i]);
+            } catch (e){};
+        }
+        console[type].call(console, data[0], data[1] || "", data[2] || "", data[3] || "");
+    }
+</script>
+</body>
+</html>

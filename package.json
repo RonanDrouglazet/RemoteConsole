@@ -1,0 +1,19 @@
+{
+    "name": "RemoteConsole",
+    "version": "1.0.0",
+    "homepage": "https://github.com/ebuzzing/RemoteConsole",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ebuzzing/RemoteConsole.git"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.2",
+        "grunt-cli": "~0.1.13",
+        "grunt-contrib-concat": "~0.3.0",
+        "grunt-contrib-uglify": "0.2.7",
+        "express": "~4.0.x",
+        "socket.io": "*",
+        "ip": "*",
+        "colors": "*"
+    }
+}
