@@ -6,9 +6,6 @@
     };
 
     rc.prototype.init = function() {
-        // active ebzformats logs
-        // TODO move that away
-        window.name = "ebz1";
         // call socket.io to start console remote
         var s = document.createElement('script');
         s.src = this.server + '/socket.io/socket.io.js';
@@ -117,32 +114,8 @@
         }
     };
 
-    /*
-    // define some classic debug log for support's team etc..
-    // TODO Finish that, we just have 10% here, define other test with @tariq
-    function scanEbz(data) {
-        console.log({
-            "currentUrl": window.location.href,
-            "pid": getAdId("pid"),
-            "cid": getAdId("cid"),
-            "ebz": !!window.ebz
-        });
-    }
-
-    // extract pid or cid (type) on page
-    function getAdId(type) {
-        var r = new RegExp(type + "=\\d+", "g");
-        var p = document.body.innerHTML.match(r);
-        var o = {};
-        if (p) {
-            p.forEach(function(obj, index) {
-                o[obj.substr(4)] = true;
-            });
-        }
-        return o;
-    }
-    */
-
+    // init remote console
     window.RemoteConsole = new rc();
     window.RemoteConsole.init();
+
 })(window.location.search);
