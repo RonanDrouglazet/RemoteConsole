@@ -3,8 +3,11 @@ RemoteConsole
 
 Web debugging tool on a remote browser
 
-Some mobile device does not supports classic debug console (safari and chrome with the mobile connected on your desktop) and proxy too. so in these cases, debuging seems to be impossible..
-That's why a remote console was born, it allow you to see logs / error and execute JS commands and some other tests, but with remote facility ! no more cable ! your device just need to be on the same local network as your desktop. Can be use on classic desktop browser too
+Some mobile device does not supports classic debug console (safari and chrome with the mobile connected on your desktop) and proxy too. so in these cases, debuging seems to be impossible.. 
+
+That's why a remote console was born, it allow you to see logs / error and execute JS commands and some other tests, but with remote facility ! no more cable ! your device just need to be on the same local network as your desktop. 
+
+Can be use on classic desktop browser too
 
 # Requirement
 
@@ -15,7 +18,7 @@ That's why a remote console was born, it allow you to see logs / error and execu
 
 ## Build
 
-If you have ebuzzing/EbzFormat on your machine, skip this step and go to the step `run`
+If you have ebuzzing/EbzFormat on your machine, skip this step and go to the step `Run`
 
 To build the project, run:
 
@@ -23,7 +26,7 @@ To build the project, run:
 
 ## Bootstrap
 
-If you want to use the remote console with ebuzzing/EbzFormat or ebuzzing/EbzPlatform, skip this step and go to the step `run`. 
+If you want to use the remote console with ebuzzing/EbzFormat or ebuzzing/EbzPlatform, skip this step and go to the step `Run`. 
 This step is just for external use of remote console.
 
 1) Script + Url param
@@ -40,7 +43,7 @@ Then, when you want to activate the remote console on your page, just put a para
 
     ?console=http://RemoteConsoleServerIp
     
-off course, you have to replace `RemoteConsoleServerIp` with the ip that RemoteConsole gives you when you run it on your machine (see step `run`)
+off course, you have to replace `RemoteConsoleServerIp` with the ip that RemoteConsole gives you when you run it on your machine (see step `Run`)
 
 2) Direct call with script
 
@@ -54,8 +57,10 @@ BUT your remote console will be call ALL THE TIME, do that only if you are not o
 
 ### EbzFormat User
 
-Go on your ebuzzing/EbzFormat folder, and just run `make debug` to build and run the remote console with EbzFormat's implementation
-In your terminal, you will see the param to put on your url to debug, and all logs will appear here.
+Go on your ebuzzing/EbzFormat folder, and just run `make debug` to build and run the remote console with EbzFormat's implementation 
+
+In your terminal, you will see the param to put on your url to debug, and all logs will appear here. 
+
 You can also go on `http://localhost:8080` and open your web brower tools (classic browser console), all the log you see on your terminal will appear here too
 
 To do some action on your page, execute js / command / etc.. run `make console` in an other terminal window
@@ -66,7 +71,8 @@ To run remote console server and see logs from your html page, run:
 
     node src/back/console_back.js
   
-In your terminal, you will see the param to put on your url to debug, and all logs will appear here.
+In your terminal, you will see the param to put on your url to debug, and all logs will appear here. 
+
 You can also go on `http://localhost:8080` and open your web brower tools (classic browser console), all the log you see on your terminal will appear here too
 
 To do some action on your page, execute js / command / etc.. run `sh console.sh` in an other terminal window
