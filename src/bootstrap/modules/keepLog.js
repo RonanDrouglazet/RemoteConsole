@@ -1,5 +1,5 @@
 (function(w){
-    if (!w.consoleRetain) {
+    if (w.consoleLoading && !w.consoleRetain) {
         w.consoleRetain = {log: [], info: [], error: [], warn: []};
         w.console.log = function(){ w.consoleRetain.log.push(arguments) };
         w.console.warn = function(){ w.consoleRetain.warn.push(arguments) };

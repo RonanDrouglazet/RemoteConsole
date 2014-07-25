@@ -36,15 +36,6 @@
             this.socket.emit("c_error", { origin: window.location.host, message: this.convertArg(arguments), time: this.getTime() });
         }.bind(this);
 
-        // if we miss some log when this file was loading, retrieve it and log it !
-        if (window.consoleRetain) {
-            for (var i in window.consoleRetain) {
-                window.consoleRetain[i].forEach(function(arg, index) {
-                    window.console[i].apply(window, arg);
-                });
-            }
-        }
-
         // listen each module
         for (var moduleName in this.module) {
             if (this.module.hasOwnProperty(moduleName)) {
@@ -53,7 +44,22 @@
         }
 
         // init
-        this.socket.on("init", function() { this.socket.emit("newSession")}.bind(this));
+        this.socket.on("init", function() {
+            this.socket.emit("newSession");
+            this.clearConsoleRetain();
+        }.bind(this));
+    };
+
+    rc.prototype.clearConsoleRetain = function() {
+        // if we miss some log when this file was loading, retrieve it and log it !
+        if (window.consoleRetain) {
+            for (var i in window.consoleRetain) {
+                window.consoleRetain[i].forEach(function(arg, index) {
+                    window.console[i].apply(window, arg);
+                });
+            }
+            window.consoleRetain = {};
+        }
     };
 
     // check if we have an object in given arguments, and stringify it
