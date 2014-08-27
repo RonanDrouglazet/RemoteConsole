@@ -1,7 +1,14 @@
 (function(paramsUrl){
 
     var rc = function() {
-        this.server = paramsUrl.substr(paramsUrl.indexOf("console=")).split("&")[0].split("=")[1];
+        var scripts = document.getElementsByTagName("script");
+        var domain = "localhost:8080";
+        for (var i in scripts) {
+            if (scripts[i].src && scripts[i].src.indexOf("console_front") !== -1) {
+                domain = scripts[i].src.split("/")[2];
+            }
+        }
+        this.server = "http://" + domain;
         this.module = {};
     };
 
