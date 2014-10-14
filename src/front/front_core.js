@@ -1,3 +1,26 @@
+// Polyfills
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
+if (!Function.prototype.bind) {
+    Function.prototype.bind = function (that) {
+        if (typeof this !== "function") {
+            // closest thing possible to the ECMAScript 5 internal IsCallable function
+            throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+        }
+
+        var args = Array.prototype.slice.call(arguments, 1);
+        var toBind = this;
+        var nop = function() { /* do nothing */ };
+        var bound = function() {
+            return toBind.apply(this instanceof nop && that ? this : that, args.concat(Array.prototype.slice.call(arguments)));
+        };
+
+        nop.prototype = this.prototype;
+        bound.prototype = new nop();
+
+        return bound;
+    };
+}
+
 (function(paramsUrl){
 
     var rc = function() {
