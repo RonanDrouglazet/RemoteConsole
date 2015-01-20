@@ -85,7 +85,7 @@ if (!Function.prototype.bind) {
         if (window.consoleRetain) {
             for (var i in window.consoleRetain) {
                 window.consoleRetain[i].forEach(function(arg, index) {
-                    window.console[i].apply(window, arg);
+                    window.console[i].apply(window.console, arg);
                 });
             }
             window.consoleRetain = {};
